@@ -8,10 +8,21 @@ function Buildings({})
     const [buildingsData, setBuildingsData] = useState([]);
     const [buildings, setBuildings] = useState([]);
     
+    /*
     useEffect(() => {
+      const targetServer = 'https://connect4udbservice.azurewebsites.net/'
       const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
       const targetUrl = 'https://connect4udbservice.azurewebsites.net/api/getbuildings';
       fetch(proxyUrl + targetUrl)
+        .then(response => response.json())
+        .then(data => setBuildingsData(data))
+        .catch(error => console.error(error));
+    }, []);
+    */
+
+    useEffect(() => {
+      const targetUrl = 'http://localhost:7071/api/GetBuildings';
+      fetch(targetUrl)
         .then(response => response.json())
         .then(data => setBuildingsData(data))
         .catch(error => console.error(error));
@@ -30,7 +41,7 @@ function Buildings({})
     const filterBuildings = (input) => {
         const filtered = buildingsData.filter(building => {
           const regex = new RegExp(input, 'gi');
-          return building.title.match(regex) || building.city.match(regex);
+          return building.title.match(regex) || building.fullAddress.city.match(regex);
         });
         return filtered;
       }
@@ -52,12 +63,12 @@ function Buildings({})
         {buildings.length > 0
           ? buildings.map((building) => (
               <div className="building" key={building.id}>
-                <BuildingButton title={building.title} city={building.city} />
+                <BuildingButton title={building.title} city={building.fullAddress.city} />
               </div>
             ))
           : buildingsData.map((building) => (
               <div className="building" key={building.id}>
-                <BuildingButton title={building.title} city={building.city} />
+                <BuildingButton title={building.title} city={building.fullAddress.city} />
               </div>
             ))}
             </div>
