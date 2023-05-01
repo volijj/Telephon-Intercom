@@ -1,11 +1,22 @@
 body{
     padding: 20px;
 }
+.show-buildings{
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid teal;
+    border-color: #008080;
+    margin-top: 60px;
+}
 .buildings-name {
     display: grid;
-    grid-template-columns: 4fr 50%;
+    grid-template-columns: 2fr 50%;
     /* grid-template-columns: repeat(2, 50in);  */
-    grid-gap: 20px;   
+    grid-gap: 20px;  
+    /* padding-top: 40px; */
+    padding: 20px;
+    
+    
 }
 
 .button {
@@ -22,6 +33,18 @@ body{
     padding-right: 50px;
 }
 
+.button-add{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    width: 20%;
+    background-color: teal;
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
+}
+
 .button:hover{
     background-color: teal;
     color: white;
@@ -33,13 +56,21 @@ body{
     right: 0%; 
     transform: translateY(-50%);
     padding: 10px;
-    border-width: 2px;
-    border-color:  teal;
-    background-color: white;
+    background-color: #008080;
     border-radius: 50px;
-    color: black;
+    color: white;
 }
-
 .search{
-    margin: 20px;
+    /* position: absolute; */
+  top: 90px;
+  right: 50px;
+  position:fixed;
+  /* /* display: flex; */
+  /* align-items: center;  */
+  background-color: white;
+  
+}
+.search-input{
+    margin: 20px 5px;
+    text-align: right;
 }

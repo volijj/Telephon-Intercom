@@ -25,6 +25,19 @@ function Buildings({})
 
     const [buildings, setBuildings] = useState([]);
     
+    // useEffect(() => {
+    //     fetch("https://connect4udbservice.azurewebsites.net/api/getbuildings")
+    //     .then(response => response.json())
+    //     .then(buildingsData => {
+    //         // extract title information from buildingsData
+    //         buildingsData.forEach(building => {
+    //         console.log(building.title);
+    //         // do whatever you want with the title information here
+    //         });
+    //     })
+    //     .catch(error => console.error(error));
+    // }, []);
+
     const handleSearch = (e) => {
         const input = e.target.value;
         if (input === '') {
@@ -45,11 +58,25 @@ function Buildings({})
 
     return (
         <div className='Buildings'>
+            <h1>הבניינים שלך</h1>
         <form className="inputs">
-       
+        <button className='button-add'> הוספת בניין חדש +</button>
         <Search onChange={handleSearch} />
-      </form>
-      <div className="buildings-name">
+        
+        </form>
+      <div className="show-buildings">
+        <h2 >יש לך {buildingsData.length} בניינים פעילים</h2>
+
+      {/* {buildings.length > 0
+          ? buildings.map((building) => (
+              <div className="building" key={building.id}>
+                <BuildingButton title={building.title} city={building.city} />
+              </div>
+            ))
+          : null} */}
+          <div className='buildings-name'>
+            
+          
         {buildings.length > 0
           ? buildings.map((building) => (
               <div className="building" key={building.id}>
@@ -61,6 +88,7 @@ function Buildings({})
                 <BuildingButton title={building.title} city={building.city} />
               </div>
             ))}
+            </div>
       </div>
     </div>
   );
@@ -122,5 +150,3 @@ export default Buildings;
 //         id: "79202cb9-babe-42f8-8d9b-894dd5f8eade"
 //     },
 // ];
-
-

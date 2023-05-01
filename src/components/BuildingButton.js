@@ -10,7 +10,10 @@ function BuildingButton({title, city})
 
     return (
         <div className='BuildingButton'>
-            <button className="button" onClick={handleClick} id=''>{title} , {city}<button className='home-icon'><AiOutlineHome/></button></button>
+            <button className="button" onClick={handleClick} id=''>
+                {title} , {city}
+                <span className='home-icon'><AiOutlineHome/></span>
+            </button>
         </div>
     );
     }
